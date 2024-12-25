@@ -3,6 +3,7 @@ import React from "react";
 import Typography from "./Typography";
 import Icon, { iIconType } from "./Icon";
 import { colors } from "../constant/colors";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 export interface iSkillBox {
     icon: {
@@ -14,19 +15,10 @@ export interface iSkillBox {
 }
 
 const SkillBox = ({ icon, text }: iSkillBox) => {
+    const { styles } = useStyles(StyleSheet);
     return (
         <View
-            style={{
-                padding: 20,
-                backgroundColor: "#fff",
-                borderRadius: 10,
-                borderWidth: 1,
-                borderColor: "#eaeaeaaa",
-                justifyContent: "center",
-                alignItems: "center",
-                width: 175,
-                margin: 15,
-            }}
+            style={styles.container}
         >
             <Icon
                 name={icon?.name}
@@ -45,3 +37,33 @@ const SkillBox = ({ icon, text }: iSkillBox) => {
 };
 
 export default SkillBox;
+
+const StyleSheet = createStyleSheet({
+    container: {
+        padding: 20,
+        backgroundColor: "#fff",
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: "#eaeaeaaa",
+        justifyContent: "center",
+        alignItems: "center",
+        margin: 15,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+        width: {
+            xs: 160,
+            sm: 175,
+            md: 175,
+            lg: 175,
+            xl: 175,
+            superLarge: 175,
+            tvLike: 175,
+        },
+    },
+});

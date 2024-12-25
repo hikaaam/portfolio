@@ -1,17 +1,25 @@
-import { Dimensions, Image, StyleSheet, View } from "react-native";
+import { Dimensions, Image, View } from "react-native";
 import React from "react";
-import Animated, { SlideInLeft, SlideInRight } from "react-native-reanimated";
+import Animated, {
+    LightSpeedInLeft,
+    LightSpeedInRight,
+} from "react-native-reanimated";
 import { colors } from "@/app/shared/constant/colors";
 import Typography from "@/app/shared/ui/Typography";
-import { images } from "@/assets/images/images";
-const { height, width } = Dimensions.get("window");
+import { ilyas } from "@/assets/images/images";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const Profile = () => {
+    const { styles } = useStyles(StyleSheet);
     return (
         <View style={styles.container}>
             <Typography
                 type="Poppins_700Bold"
-                style={{ fontSize: 30, color: colors.black }}
+                style={{
+                    fontSize: 30,
+                    color: colors.black,
+                    marginBottom: 30,
+                }}
             >
                 About Me
             </Typography>
@@ -19,8 +27,8 @@ const Profile = () => {
                 style={styles.sectionRow}
             >
                 <Animated.View
-                    style={{ flex: 1 }}
-                    entering={SlideInLeft.delay(100)}
+                    style={styles.rowLeft}
+                    entering={LightSpeedInLeft.delay(100)}
                 >
                     <Typography
                         type="Poppins_500Medium"
@@ -40,18 +48,12 @@ const Profile = () => {
                     </Typography>
                 </Animated.View>
                 <Animated.View
-                    style={{
-                        flex: 1,
-                        alignItems: "flex-end",
-                    }}
-                    entering={SlideInRight.delay(100)}
+                    style={styles.rowRight}
+                    entering={LightSpeedInRight.delay(100)}
                 >
                     <Image
-                        source={images.ilyas}
-                        style={{
-                            maxWidth: width / 2.5,
-                            maxHeight: height / 2.5,
-                        }}
+                        source={ilyas}
+                        style={styles.img}
                     />
                 </Animated.View>
             </View>
@@ -61,18 +63,55 @@ const Profile = () => {
 
 export default Profile;
 
-const styles = StyleSheet.create({
-    container: { paddingHorizontal: 100 },
-    sectionRow: {
-        flexDirection: "row",
+const StyleSheet = createStyleSheet((theme) => ({
+    container: {
+        justifyContent: "center",
         alignItems: "center",
-        justifyContent: "space-between",
+    },
+    img: {
+        width: {
+            md: 600,
+            sm: 600,
+            xs: 400,
+            lg: 800,
+            xl: 800,
+            superLarge: 800,
+            tvLike: 800,
+        },
+        aspectRatio: 1,
+        resizeMode: "center",
+    },
+    rowLeft: {
+        alignItems: "center",
+    },
+    rowRight: {
+        alignItems: "center",
+    },
+    sectionRow: {
+        alignItems: "center",
+        justifyContent: "center",
         flexWrap: "wrap",
     },
     textSection: {
-        fontSize: 20,
+        fontSize: {
+            xs: 19,
+            sm: 20,
+            md: 20,
+            lg: 20,
+            xl: 20,
+            superLarge: 20,
+        },
         lineHeight: 30,
-        maxWidth: 720,
+        maxWidth: {
+            md: 500,
+            sm: 430,
+            xs: 400,
+            lg: 1000,
+            xl: 1000,
+            superLarge: 2000,
+            tvLike: 4000,
+        },
         color: colors.black,
+        paddingHorizontal: 20,
     },
-});
+}));

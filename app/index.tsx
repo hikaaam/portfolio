@@ -1,25 +1,20 @@
-import {
-  ActivityIndicator,
-  Dimensions,
-  Image,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { ActivityIndicator, Dimensions, View } from "react-native";
 import { colors } from "./shared/constant/colors";
 import Typography from "./shared/ui/Typography";
 import Header from "./shared/ui/Header";
 import { SectionList } from "react-native";
-import { useEffect, useRef, useState } from "react";
-import Animated, { LightSpeedInLeft } from "react-native-reanimated";
+import { useRef } from "react";
 import useFontReady from "./shared/lib/useFontReady";
-import Button from "./shared/ui/Button";
 import Main from "./pages/Home/widgets/Main";
 import Profile from "./pages/Home/widgets/Profile";
 import Skill from "./pages/Home/widgets/Skill";
-const { height, width } = Dimensions.get("window");
-
+import Projects from "./pages/Home/widgets/Projects";
+const { height } = Dimensions.get("window");
+import "./shared/constant/unistyle";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
+import Contact from "./pages/Home/widgets/Contact";
 //section list
+
 const sections: iSections[] = [
   "main",
   "profile",
@@ -32,6 +27,7 @@ export type iSections = "main" | "profile" | "skills" | "projects" | "contact";
 export default function Home() {
   const { fontReady } = useFontReady();
   const sectionlistRef = useRef<SectionList>(null);
+  const { styles } = useStyles(StyleSheet);
 
   const scrollTo = (screenName: iSections) => {
     if (sectionlistRef?.current) {
@@ -64,7 +60,7 @@ export default function Home() {
       />
       <SectionList
         ref={sectionlistRef}
-        style={{ flex: 1, paddingHorizontal: 60 }}
+        style={styles.sectionContainer}
         sections={sections.map((item) => ({
           data: [item],
           title: item,
@@ -77,6 +73,10 @@ export default function Home() {
               return <Profile />;
             case "skills":
               return <Skill />;
+            case "projects":
+              return <Projects />;
+            case "contact":
+              return <Contact />;
             default:
               return (
                 <View
@@ -98,9 +98,19 @@ export default function Home() {
   );
 }
 
-const styles = StyleSheet.create({
+const StyleSheet = createStyleSheet({
   container: {
     flex: 1,
     backgroundColor: colors.white,
+  },
+  sectionContainer: {
+    flex: 1,
+    paddingHorizontal: {
+      lg: 60,
+      md: 40,
+      xs: 20,
+      sm: 20,
+      xl: 60,
+    },
   },
 });

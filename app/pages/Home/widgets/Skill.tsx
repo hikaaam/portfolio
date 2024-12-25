@@ -1,12 +1,14 @@
-import { Dimensions, StyleSheet, View } from "react-native";
+import { Dimensions, View } from "react-native";
 import React from "react";
 import { colors } from "@/app/shared/constant/colors";
 import Typography from "@/app/shared/ui/Typography";
 import SkillBox from "@/app/shared/ui/SkillBox";
 import { skills } from "@/app/shared/constant/skills";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 const { width } = Dimensions.get("window");
 
 const Skill = () => {
+    const { styles } = useStyles(StyleSheet);
     return (
         <View style={styles.container}>
             <Typography
@@ -22,13 +24,7 @@ const Skill = () => {
                 Here are some of technology that i usually use
             </Typography>
             <View
-                style={{
-                    flexDirection: "row",
-                    flexWrap: "wrap",
-                    maxWidth: width / 2,
-                    justifyContent: "center",
-                    alignItems: "center",
-                }}
+                style={styles.skillContainer}
             >
                 {skills.map((item, index) => (
                     <SkillBox
@@ -43,17 +39,41 @@ const Skill = () => {
 
 export default Skill;
 
-const styles = StyleSheet.create({
+const StyleSheet = createStyleSheet({
     container: {
         justifyContent: "center",
         alignItems: "center",
         marginTop: 60,
     },
     textSection: {
-        fontSize: 20,
+        fontSize: {
+            xs: 19,
+            sm: 20,
+            md: 20,
+            lg: 20,
+            xl: 20,
+            superLarge: 20,
+        },
         lineHeight: 30,
         maxWidth: 720,
         color: colors.black,
         marginVertical: 20,
+        paddingHorizontal: 20,
+        textAlign: "left",
+    },
+    skillContainer: {
+        flexDirection: "row",
+        flexWrap: "wrap",
+        maxWidth: {
+            xs: width,
+            md: width,
+            sm: width,
+            lg: width / 1.5,
+            xl: width / 1.5,
+            superLarge: width / 1.5,
+            tvLike: width / 1.5,
+        },
+        justifyContent: "center",
+        alignItems: "center",
     },
 });

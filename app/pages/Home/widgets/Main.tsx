@@ -1,12 +1,14 @@
-import { Dimensions, StyleSheet, View } from "react-native";
+import { Dimensions, View } from "react-native";
 import React from "react";
 import Animated, { LightSpeedInLeft } from "react-native-reanimated";
 import { colors } from "@/app/shared/constant/colors";
 import Button from "@/app/shared/ui/Button";
 import Typography from "@/app/shared/ui/Typography";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 const { height } = Dimensions.get("window");
 
 const Main = () => {
+    const { styles } = useStyles(StyleSheet);
     return (
         <View
             style={styles.container}
@@ -45,6 +47,7 @@ const Main = () => {
                         withIcon
                         iconProps={{ name: "logo-github" }}
                         text="Github"
+                        style={styles.btnGithub}
                     />
                     <Button
                         withIcon
@@ -64,38 +67,104 @@ const Main = () => {
 
 export default Main;
 
-const styles = StyleSheet.create({
+const StyleSheet = createStyleSheet({
     container: {
         height,
         justifyContent: "center",
         alignItems: "center",
     },
     textGreet: {
-        fontSize: 36,
+        fontSize: {
+            xs: 30,
+            sm: 36,
+            md: 36,
+            lg: 36,
+            xl: 36,
+            superLarge: 36,
+        },
+        lineHeight: {
+            xs: 40,
+            sm: 54,
+            md: 54,
+            lg: 54,
+            xl: 54,
+            superLarge: 54,
+        },
         color: colors.black,
-        lineHeight: 54,
+        paddingHorizontal: 20,
     },
     textName: {
-        fontSize: 48,
+        fontSize: {
+            xs: 40,
+            sm: 48,
+            md: 48,
+            lg: 48,
+            xl: 48,
+            superLarge: 48,
+            tvLike: 60,
+        },
+        lineHeight: {
+            xs: 55,
+            sm: 72,
+            md: 72,
+            lg: 72,
+            xl: 72,
+            superLarge: 72,
+            tvLike: 100,
+        },
         color: colors.secondary,
-        lineHeight: 72,
+        paddingHorizontal: 20,
     },
     textDesc: {
-        fontSize: 30,
+        fontSize: {
+            xs: 25,
+            sm: 30,
+            md: 30,
+            lg: 30,
+            xl: 30,
+            superLarge: 30,
+        },
+        lineHeight: {
+            xs: 40,
+            sm: 45,
+            md: 45,
+            lg: 45,
+            xl: 45,
+            superLarge: 45,
+        },
         color: colors.black,
         maxWidth: 850,
-        lineHeight: 45,
+        paddingHorizontal: 20,
     },
     btnContainer: {
         flexDirection: "row",
         alignItems: "center",
         marginTop: 40,
         marginBottom: 200,
+        paddingHorizontal: 20,
     },
     btnLinkedin: {
         marginLeft: 28,
         backgroundColor: colors.white,
         borderWidth: 1,
         borderColor: "#999999aa",
+        width: {
+            xs: 170,
+            sm: 190,
+            md: 190,
+            lg: 190,
+            xl: 190,
+            superLarge: 190,
+        },
+    },
+    btnGithub: {
+        width: {
+            xs: 170,
+            sm: 190,
+            md: 190,
+            lg: 190,
+            xl: 190,
+            superLarge: 190,
+        },
     },
 });
