@@ -1,13 +1,18 @@
-import { TextInput, View } from "react-native";
-import React from "react";
+import { Linking, TextInput, View } from "react-native";
+import React, { useState } from "react";
 import Animated, { LightSpeedInLeft } from "react-native-reanimated";
 import { colors } from "@/app/shared/constant/colors";
 import Typography from "@/app/shared/ui/Typography";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import Button from "@/app/shared/ui/Button";
+import { link } from "@/app/shared/constant/link";
 
 const Contact = () => {
     const { styles } = useStyles(StyleSheet);
+    const [{ message, subject }, setMail] = useState({
+        subject: "",
+        message: "",
+    });
     return (
         <View style={styles.container}>
             <View
@@ -45,6 +50,10 @@ const Contact = () => {
                             text="LinkedIn"
                             style={styles.btnLinkedin}
                             textProps={{ style: { color: colors.black } }}
+                            onPress={() =>
+                                Linking.openURL(
+                                    "https://linkedin.com/in/ilyas-abdurahman-yusuf",
+                                )}
                         />
                         <Button
                             withIcon
@@ -56,14 +65,19 @@ const Contact = () => {
                             text="Email"
                             style={styles.btnLinkedin}
                             textProps={{ style: { color: colors.black } }}
+                            onPress={() => {
+                                Linking.openURL(
+                                    "mailto:ilyasabdurahmanyusuf@gmail.com?subject=" +
+                                        subject + "&body=" + message,
+                                );
+                            }}
                         />
                     </View>
                     <Button
                         text="Checkout My CV"
-                        style={[styles.btnLinkedin, {
-                            width: 410,
-                        }]}
+                        style={[styles.btnLinkedin, styles.btnCV]}
                         textProps={{ style: { color: colors.black } }}
+                        onPress={() => Linking.openURL(link.cv)}
                     />
                 </Animated.View>
                 <Animated.View
@@ -81,19 +95,13 @@ const Contact = () => {
                             type="Poppins_600SemiBold"
                             style={styles.textLabel}
                         >
-                            Name
-                        </Typography>
-                        <TextInput
-                            style={styles.textInput}
-                        />
-                        <Typography
-                            type="Poppins_600SemiBold"
-                            style={styles.textLabel}
-                        >
                             Subject
                         </Typography>
                         <TextInput
                             style={styles.textInput}
+                            onChangeText={(subject) => {
+                                setMail((prev) => ({ ...prev, subject }));
+                            }}
                         />
                         <Typography
                             type="Poppins_600SemiBold"
@@ -104,8 +112,19 @@ const Contact = () => {
                         <TextInput
                             style={styles.textInputArea}
                             multiline
+                            onChangeText={(message) => {
+                                setMail((prev) => ({ ...prev, message }));
+                            }}
                         />
-                        <Button text="Send Message" style={{ width: null }} />
+                        <Button
+                            text="Send Message"
+                            style={{ width: null }}
+                            onPress={() =>
+                                Linking.openURL(
+                                    "mailto:ilyasabdurahmanyusuf@gmail.com?subject=" +
+                                        subject + "&body=" + message,
+                                )}
+                        />
                     </View>
                 </Animated.View>
             </View>
@@ -194,5 +213,16 @@ const StyleSheet = createStyleSheet((theme) => ({
         borderRadius: 5,
         marginBottom: 20,
         minHeight: 200,
+    },
+    btnCV: {
+        width: {
+            md: 410,
+            sm: 410,
+            xs: 350,
+            lg: 410,
+            xl: 410,
+            superLarge: 410,
+            tvLike: 410,
+        },
     },
 }));

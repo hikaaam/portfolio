@@ -1,13 +1,9 @@
-import {
-    StyleProp,
-    StyleSheet,
-    TouchableOpacity,
-    ViewStyle,
-} from "react-native";
+import { StyleProp, TouchableOpacity, ViewStyle } from "react-native";
 import React from "react";
 import Icon, { iIcon } from "./Icon";
 import Typography, { iTypography } from "./Typography";
 import { colors } from "../constant/colors";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 interface iButton {
     withIcon?: boolean;
@@ -19,6 +15,7 @@ interface iButton {
 }
 
 const Button = (props?: iButton) => {
+    const { styles } = useStyles(StyleSheet);
     return (
         <TouchableOpacity
             style={[styles.container, props?.style]}
@@ -45,13 +42,21 @@ const Button = (props?: iButton) => {
 
 export default Button;
 
-const styles = StyleSheet.create({
+const StyleSheet = createStyleSheet({
     container: {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: colors.primary,
-        width: 190,
+        width: {
+            xs: 168,
+            sm: 168,
+            md: 168,
+            lg: 190,
+            xl: 190,
+            superLarge: 190,
+            tvLike: 190,
+        },
         paddingHorizontal: 11,
         paddingVertical: 6,
         borderRadius: 10,

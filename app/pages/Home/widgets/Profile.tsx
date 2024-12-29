@@ -1,4 +1,4 @@
-import { Dimensions, Image, View } from "react-native";
+import { Image, View } from "react-native";
 import React from "react";
 import Animated, {
     LightSpeedInLeft,

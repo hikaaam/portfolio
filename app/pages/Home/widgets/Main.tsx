@@ -1,4 +1,4 @@
-import { Dimensions, View } from "react-native";
+import { Dimensions, Linking, View } from "react-native";
 import React from "react";
 import Animated, { LightSpeedInLeft } from "react-native-reanimated";
 import { colors } from "@/app/shared/constant/colors";
@@ -48,6 +48,8 @@ const Main = () => {
                         iconProps={{ name: "logo-github" }}
                         text="Github"
                         style={styles.btnGithub}
+                        onPress={() =>
+                            Linking.openURL("https://github.com/hikaaam")}
                     />
                     <Button
                         withIcon
@@ -58,6 +60,10 @@ const Main = () => {
                         text="LinkedIn"
                         style={styles.btnLinkedin}
                         textProps={{ style: { color: colors.black } }}
+                        onPress={() =>
+                            Linking.openURL(
+                                "https://linkedin.com/in/ilyas-abdurahman-yusuf",
+                            )}
                     />
                 </Animated.View>
             </View>
