@@ -1,3 +1,3 @@
 export const link = {
-    cv: "https://hikaaam.github.io/src/assets/assets/cv.pdf",
+    cv: "https://raw.githubusercontent.com/hikaaam/hikaaam.github.io/refs/heads/main/src/assets/cv.pdf",
 };
