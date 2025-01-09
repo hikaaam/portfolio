@@ -4,7 +4,6 @@ import Typography from "./shared/ui/Typography";
 import Header from "./shared/ui/Header";
 import { SectionList } from "react-native";
 import { useRef } from "react";
-import useFontReady from "./shared/lib/useFontReady";
 import Main from "./pages/Home/widgets/Main";
 import Profile from "./pages/Home/widgets/Profile";
 import Skill from "./pages/Home/widgets/Skill";
@@ -13,8 +12,10 @@ const { height } = Dimensions.get("window");
 import "./shared/constant/unistyle";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import Contact from "./pages/Home/widgets/Contact";
-//section list
+import useFontReady from "./shared/lib/useFontReady";
+import { registerRootComponent } from "expo";
 
+//section list
 const sections: iSections[] = [
   "main",
   "profile",
@@ -24,10 +25,10 @@ const sections: iSections[] = [
 ];
 export type iSections = "main" | "profile" | "skills" | "projects" | "contact";
 
-export default function Home() {
-  const { fontReady } = useFontReady();
+function Home() {
   const sectionlistRef = useRef<SectionList>(null);
   const { styles } = useStyles(StyleSheet);
+  const { fontReady } = useFontReady();
 
   const scrollTo = (screenName: iSections) => {
     if (sectionlistRef?.current) {
@@ -114,3 +115,5 @@ const StyleSheet = createStyleSheet({
     },
   },
 });
+
+registerRootComponent(Home);

@@ -8,6 +8,7 @@ import { colors } from "@/app/shared/constant/colors";
 import Typography from "@/app/shared/ui/Typography";
 import { ilyas } from "@/assets/images/images";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+import DayJs from "dayjs";
 
 const Profile = () => {
     const { styles } = useStyles(StyleSheet);
@@ -34,9 +35,10 @@ const Profile = () => {
                         type="Poppins_500Medium"
                         style={styles.textSection}
                     >
-                        I have 3 years of experience in developing mobile apps
-                        using React Native, and I am also experienced in
-                        building Backend using NodeJS or Laravel.
+                        I have {DayJs().diff("01/01/2020", "years") + " "}
+                        years of experience in developing mobile apps using
+                        React Native, and I am also experienced in building
+                        Backend using NodeJS or Laravel.
                     </Typography>
                     <Typography
                         type="Poppins_500Medium"
@@ -54,6 +56,7 @@ const Profile = () => {
                     <Image
                         source={ilyas}
                         style={styles.img}
+                        resizeMode="center"
                     />
                 </Animated.View>
             </View>
@@ -79,7 +82,6 @@ const StyleSheet = createStyleSheet((theme) => ({
             tvLike: 800,
         },
         aspectRatio: 1,
-        resizeMode: "center",
     },
     rowLeft: {
         alignItems: "center",

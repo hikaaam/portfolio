@@ -1,7 +1,8 @@
 {
   "name": "portfolio",
-  "main": "expo-router/entry",
+  "main": "app/index.tsx",
   "version": "1.0.0",
+  "homepage": "https://hikaaam.github.io/portfolio",
   "scripts": {
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
@@ -15,12 +16,14 @@
     "preset": "jest-expo"
   },
   "dependencies": {
-    "@expo-google-fonts/poppins": "^0.2.3",
-    "@expo/match-media": "^0.4.0",
+    "@expo/next-adapter": "^6.0.0",
     "@expo/vector-icons": "^14.0.2",
     "@react-navigation/bottom-tabs": "^7.0.0",
     "@react-navigation/native": "^7.0.0",
+    "@types/react-dom": "^19.0.2",
     "@types/react-native-vector-icons": "^6.4.18",
+    "@types/react-native-web": "^0.19.0",
+    "dayjs": "^1.11.13",
     "expo": "~52.0.20",
     "expo-blur": "~14.0.1",
     "expo-constants": "~17.0.3",
@@ -33,6 +36,7 @@
     "expo-symbols": "~0.2.0",
     "expo-system-ui": "~4.0.6",
     "expo-web-browser": "~14.0.1",
+    "gh-pages": "^6.3.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-native": "0.76.5",
