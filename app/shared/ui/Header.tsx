@@ -46,6 +46,17 @@ export default function Header(props: IHeader) {
     const closeModal = useCallback(() => setModal(false), []);
     const openModal = useCallback(() => setModal(true), []);
 
+    const onPress = (screen: iSections) => {
+        if (breakpoint !== "md" && breakpoint !== "sm" && breakpoint !== "xs") {
+            props?.onPress(screen);
+            return;
+        }
+        closeModal();
+        setTimeout(() => {
+            props?.onPress(screen);
+        }, 500);
+    };
+
     useEffect(() => {
         if (breakpoint !== "md" && breakpoint !== "sm" && breakpoint !== "xs") {
             setModal(false);
@@ -65,7 +76,7 @@ export default function Header(props: IHeader) {
                     entering={FadeInDown}
                     exiting={FadeOutDown}
                 >
-                    <TouchableOpacity onPress={() => props?.onPress("main")}>
+                    <TouchableOpacity onPress={() => onPress("main")}>
                         <Image
                             source={icon}
                             style={styles.imgIcon}
@@ -79,7 +90,7 @@ export default function Header(props: IHeader) {
                             exiting={FadeOutDown.delay((index + 1) * 100)}
                         >
                             <TouchableOpacity
-                                onPress={() => props?.onPress(item)}
+                                onPress={() => onPress(item)}
                                 key={"headeritem" + item + index}
                             >
                                 <Typography style={styles.textHeader}>
@@ -161,7 +172,7 @@ export default function Header(props: IHeader) {
                                         exiting={LightSpeedOutLeft}
                                     >
                                         <TouchableOpacity
-                                            onPress={() => props?.onPress(item)}
+                                            onPress={() => onPress(item)}
                                             key={"headeritemmobile" + item +
                                                 index}
                                         >
@@ -180,6 +191,39 @@ export default function Header(props: IHeader) {
                                         </TouchableOpacity>
                                     </Animated.View>
                                 ))}
+                            </View>
+                            <View
+                                style={{
+                                    flex: 1,
+                                    justifyContent: "flex-end",
+                                    alignItems: "flex-start",
+                                }}
+                            >
+                                <Animated.View
+                                    style={{
+                                        flexDirection: "row",
+                                        flex: 1,
+                                        alignItems: "flex-end",
+                                    }}
+                                    entering={LightSpeedInLeft.delay(1000)}
+                                    exiting={LightSpeedOutLeft}
+                                >
+                                    <Icon
+                                        name="react"
+                                        type="MaterialCommunityIcon"
+                                        color={colors.secondary}
+                                        size={25}
+                                    />
+                                    <Typography
+                                        type="Poppins_300Light"
+                                        style={{
+                                            marginLeft: 5,
+                                            color: colors.black,
+                                        }}
+                                    >
+                                        Powered by React Native Web
+                                    </Typography>
+                                </Animated.View>
                             </View>
                         </Pressable>
                     </Animated.View>

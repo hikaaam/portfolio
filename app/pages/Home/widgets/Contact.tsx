@@ -6,6 +6,7 @@ import Typography from "@/app/shared/ui/Typography";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import Button from "@/app/shared/ui/Button";
 import { link } from "@/app/shared/constant/link";
+import Icon from "@/app/shared/ui/Icon";
 
 const Contact = () => {
     const { styles } = useStyles(StyleSheet);
@@ -127,6 +128,25 @@ const Contact = () => {
                         />
                     </View>
                 </Animated.View>
+            </View>
+            <View
+                style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                }}
+            >
+                <Icon
+                    name="react"
+                    type="MaterialCommunityIcon"
+                    color={colors.secondary}
+                    size={25}
+                />
+                <Typography
+                    type="Poppins_300Light"
+                    style={{ marginLeft: 5, color: colors.black }}
+                >
+                    Powered by React Native Web
+                </Typography>
             </View>
         </View>
     );
