@@ -3,11 +3,18 @@ import {
     juber,
     m2ubiz,
     mae,
+    maybankTrade,
     pavel,
     sipdeh,
 } from "@/assets/images/images";
 
 export const portfolio = [
+    {
+        title: "Maybank Trade App",
+        desc:
+            "Maybank Trade delivers innovative, powerful trading tools to help you uncover potential market opportunities and implement your unique trading strategy. \nMaybank Trade uses some of the most advanced trading technologies available to help you pursue your financial goals.",
+        image: maybankTrade,
+    },
     {
         title: "Maybank2u Biz",
         desc:

@@ -7,6 +7,7 @@ const fuxionSpark = require("./fuxionSpark.png");
 const m2ubiz = require("./m2ubiz.png");
 const mae = require("./mae.png");
 const iconUpscale = require("./logo-upscale.png");
+const maybankTrade = require("./maybankTrade.png")
 
 export {
     fuxionSpark,
@@ -18,4 +19,5 @@ export {
     mae,
     pavel,
     sipdeh,
+    maybankTrade
 };
